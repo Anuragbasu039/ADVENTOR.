@@ -7,6 +7,7 @@ const session = require("express-session");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const authRouter = require("./routes/auth/auth-routes");
 const contact = require("./routes/contact/contact")
+const register = require("./routes/registerform/register")
 require("dotenv").config();
 
 // Connect to MongoDB
@@ -69,6 +70,7 @@ app.use(express.json());
 // Routes
 app.use("/api/auth", authRouter);
 app.use("/api", contact)
+app.use("/api/form", register)
 
 // Start server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

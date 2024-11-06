@@ -10,6 +10,8 @@ import SignIn from './pages/signIn.jsx'; // Import the SignIn component
 import SignUp from './pages/signUp.jsx'; // Import the SignUp component
 import Home from './pages/Home/home.jsx'
 import Contact from './components/Contact/contact.jsx'
+import Register from './components/Registerform/register.jsx'
+import Checkform from './components/Checkform/checkform.jsx'
 const router = createBrowserRouter([
     {
         path: "/",
@@ -30,6 +32,14 @@ const router = createBrowserRouter([
     {
         path: "/contact",
         element: <Contact />,
+    },
+    {
+        path: "/register",
+        element: <Register />,
+    },
+    {
+        path: "/checkform",
+        element: <Checkform />,
     },
 ]);
 
