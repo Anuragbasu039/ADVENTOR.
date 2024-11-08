@@ -5,8 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
 
+
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        blackrush: ['Blackrush', 'sans-serif'], // Add your font family here
+      },
+    },
   },
   plugins: [],
 }

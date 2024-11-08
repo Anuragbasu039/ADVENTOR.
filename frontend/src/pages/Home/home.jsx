@@ -5,6 +5,9 @@ import Header from "../../components/Header/header.jsx";
 import Tripscard from "../../components/Tripscards/tripscard.jsx";
 import Indiantrips from "../../components/IndianTrips/indiantrips.jsx";
 import Internationaltrips from "../../components/InternationalTrips/internationaltrips.jsx";
+import Adventures from "../../components/Adventurehome/adventures.jsx";
+import OfferSection from "../../components/OfferSection/offersection.jsx";
+import Testinominals from "../../components/Testinominals/testinominals.jsx";
 
 function Home() {
     // State to manage the dropdown visibility
@@ -14,9 +17,12 @@ function Home() {
      <div>
          <Navbar/>
          <Header/>
+         <Adventures />
          <Tripscard/>
          <Indiantrips />
          <Internationaltrips />
+         <OfferSection />
+         <Testinominals />
         </div>
     );
 }
