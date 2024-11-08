@@ -2,7 +2,9 @@
 import React from 'react';
 import Navbar from "../../components/Navbar/navbar.jsx";
 import Header from "../../components/Header/header.jsx";
-import Card from "../../components/Cards/card.jsx";
+import Tripscard from "../../components/Tripscards/tripscard.jsx";
+import Indiantrips from "../../components/IndianTrips/indiantrips.jsx";
+import Internationaltrips from "../../components/InternationalTrips/internationaltrips.jsx";
 
 function Home() {
     // State to manage the dropdown visibility
@@ -12,7 +14,9 @@ function Home() {
      <div>
          <Navbar/>
          <Header/>
-         <Card/>
+         <Tripscard/>
+         <Indiantrips />
+         <Internationaltrips />
         </div>
     );
 }

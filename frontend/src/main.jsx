@@ -12,6 +12,7 @@ import Home from './pages/Home/home.jsx'
 import Contact from './components/Contact/contact.jsx'
 import Register from './components/Registerform/register.jsx'
 import Checkform from './components/Checkform/checkform.jsx'
+import Trips from "./components/Trips/trips.jsx";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
     {
         path: "/checkform",
         element: <Checkform />,
+    },
+    {
+        path: "/trip",
+        element: <Trips />,
     },
 ]);
 

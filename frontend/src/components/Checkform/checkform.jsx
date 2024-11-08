@@ -12,13 +12,13 @@ const CheckForm = () => {
     // Handle final submit
     const handleFinalSubmit = async () => {
         try {
-            console.log(formData)
+
             // Send the data to the backend using Axios (no agreement field)
             const response = await axios.post("http://localhost:8000/api/form/register", formData);
 
             // If the request is successful, navigate to a success page or confirmation page
             console.log("Registration successful:", response.data);
-            navigate("/success"); // Assuming you have a /success route
+            navigate("/checkform"); // Assuming you have a /success route
 
         } catch (error) {
             console.error("Error submitting form:", error);
@@ -71,7 +71,7 @@ const CheckForm = () => {
                     </div>
                     <div>
                         <label className="text-sm font-semibold text-gray-700">Camp/Event/Course:</label>
-                        <p className="mt-1 p-2 border border-gray-300 rounded-md bg-gray-100">{formData.campEventCourse || "Not provided"}</p>
+                        <p className="mt-1 p-2 border border-gray-300 rounded-md bg-gray-100">{formData.event || "Not provided"}</p>
                     </div>
                     <div>
                         <label className="text-sm font-semibold text-gray-700">Student Name:</label>

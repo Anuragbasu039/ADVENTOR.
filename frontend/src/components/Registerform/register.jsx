@@ -14,7 +14,7 @@ const AdventureForm = () => {
         venue: "",
         date: "",
         year: "",
-        campEventCourse: "",
+        event: "",
         studentName: "",
         guardianName: "",
         bloodGroup: "",
@@ -120,8 +120,8 @@ const AdventureForm = () => {
                         <label className="block text-sm font-semibold text-gray-700">Camp/Event/Course</label>
                         <input
                             type="text"
-                            name="campEventCourse"
-                            value={formData.campEventCourse}
+                            name="event"
+                            value={formData.event}
                             onChange={handleChange}
                             className="w-full mt-1 p-2 border border-gray-300 rounded-md"
                         />
