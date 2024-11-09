@@ -24,7 +24,6 @@
 //
 
 import React from 'react';
-// Import your local image
 import keralaImage from '../../assets/Kerala.jpg';
 
 const AdventureTravel = () => {
@@ -39,14 +38,14 @@ const AdventureTravel = () => {
             {/* Content */}
             <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
                 {/* Main Text */}
-                <h1 className="text-4xl md:text-5xl font-bold mb-2">Discover the</h1>
-                <h2 className="text-5xl md:text-6xl font-extrabold mb-4">Adventure Travel</h2>
+                <h1 className="text-4xl md:text-5xl font-bold font-rogthem mb-2" >Discover the</h1>
+                <h2 className="text-5xl md:text-6xl font-extrabold font-rogthem mb-4">Adventure Travel</h2>
 
                 {/* Subtitle */}
-                <p className="text-lg mb-8">Your best Adventure Deals, visit nature.</p>
+                <p className="text-lg font-rogthem mb-8">Your best Adventure Deals, visit nature.</p>
 
                 {/* Button */}
-                <button className="px-8 py-3 bg-white text-black font-semibold rounded-md hover:bg-gray-200 transition">
+                <button className="px-8 py-3 bg-white text-teal-600 font-semibold font-rogthem rounded-md hover:bg-gray-200 transition">
                     View Adventures
                 </button>
             </div>
@@ -55,3 +54,4 @@ const AdventureTravel = () => {
 };
 
 export default AdventureTravel;
+

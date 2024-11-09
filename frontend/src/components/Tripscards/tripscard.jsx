@@ -48,7 +48,7 @@ function BestTrips() {
     return (
         <div className="bg-white p-6">
             <h1 className="text-3xl font-bold text-center mb-8">
-                Best Trips Across <span className="text-blue-600">The Globe</span>
+                Best Trips Across <span className="text-teal-600">The Globe</span>
             </h1>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
                 {destinations.map((destination) => (

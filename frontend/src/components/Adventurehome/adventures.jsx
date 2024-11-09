@@ -29,7 +29,7 @@ const AdventureIdeas = () => {
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Zip Lines</h3>
                     <p className="text-gray-600 mb-4">Add some adrenalin to your travel senses by zipline travel.</p>
-                    <button className="bg-black text-white py-2 px-4 rounded">Enquire</button>
+                    <button className="bg-teal-600 text-white py-2 px-4 rounded">Enquire</button>
                 </div>
 
                 <div className="text-center">
@@ -38,7 +38,7 @@ const AdventureIdeas = () => {
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Kayaking</h3>
                     <p className="text-gray-600 mb-4">Kayaking makes thrill take to the next level.</p>
-                    <button className="bg-black text-white py-2 px-4 rounded">Enquire</button>
+                    <button className="bg-teal-600 text-white py-2 px-4 rounded">Enquire</button>
                 </div>
 
                 <div className="text-center">
@@ -47,7 +47,7 @@ const AdventureIdeas = () => {
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Bungee Jump</h3>
                     <p className="text-gray-600 mb-4">Bungee jumps is one of the most exhilarating adventure.</p>
-                    <button className="bg-black text-white py-2 px-4 rounded">Enquire</button>
+                    <button className="bg-teal-600 text-white py-2 px-4 rounded">Enquire</button>
                 </div>
 
                 <div className="text-center">
@@ -56,7 +56,7 @@ const AdventureIdeas = () => {
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Canoeing</h3>
                     <p className="text-gray-600 mb-4">Just sail in the calm waters of the sea with complete safety.</p>
-                    <button className="bg-black text-white py-2 px-4 rounded">Enquire</button>
+                    <button className="bg-teal-600 text-white py-2 px-4 rounded">Enquire</button>
                 </div>
             </div>
         </section>

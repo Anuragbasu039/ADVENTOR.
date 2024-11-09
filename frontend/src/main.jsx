@@ -5,14 +5,17 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import "./index.css";
-import App from './App.jsx'; // Assuming your App component is set up for additional routes
-import SignIn from './pages/signIn.jsx'; // Import the SignIn component
-import SignUp from './pages/signUp.jsx'; // Import the SignUp component
-import Home from './pages/Home/home.jsx'
-import Contact from './components/Contact/contact.jsx'
-import Register from './components/Registerform/register.jsx'
-import Checkform from './components/Checkform/checkform.jsx'
-import Trips from "./components/Trips/trips.jsx";
+import App from './App.jsx'; // Main App component
+
+// Lazy load the components
+const SignIn = React.lazy(() => import('./pages/signIn.jsx'));
+const SignUp = React.lazy(() => import('./pages/signUp.jsx'));
+const Home = React.lazy(() => import('./pages/Home/home.jsx'));
+const Contact = React.lazy(() => import('./components/Contact/contact.jsx'));
+const Register = React.lazy(() => import('./components/Registerform/register.jsx'));
+const Checkform = React.lazy(() => import('./components/Checkform/checkform.jsx'));
+const Trips = React.lazy(() => import('./components/Trips/trips.jsx'));
+const About = React.lazy(() =>import ('./components/About/about.jsx'));
 const router = createBrowserRouter([
     {
         path: "/",
@@ -20,31 +23,67 @@ const router = createBrowserRouter([
     },
     {
         path: "/signin",
-        element: <SignIn />, // Sign In route
+        element: (
+            <React.Suspense fallback={<div>Loading Sign In...</div>}>
+                <SignIn />
+            </React.Suspense>
+        ),
     },
     {
         path: "/signup",
-        element: <SignUp />, // Sign Up route
+        element: (
+            <React.Suspense fallback={<div>Loading Sign Up...</div>}>
+                <SignUp />
+            </React.Suspense>
+        ),
     },
     {
         path: "/home",
-        element: <Home />, // Sign Up route
+        element: (
+            <React.Suspense fallback={<div>Loading Home...</div>}>
+                <Home />
+            </React.Suspense>
+        ),
     },
     {
         path: "/contact",
-        element: <Contact />,
+        element: (
+            <React.Suspense fallback={<div>Loading Contact...</div>}>
+                <Contact />
+            </React.Suspense>
+        ),
     },
     {
         path: "/register",
-        element: <Register />,
+        element: (
+            <React.Suspense fallback={<div>Loading Register...</div>}>
+                <Register />
+            </React.Suspense>
+        ),
     },
     {
         path: "/checkform",
-        element: <Checkform />,
+        element: (
+            <React.Suspense fallback={<div>Loading Checkform...</div>}>
+                <Checkform />
+            </React.Suspense>
+        ),
     },
     {
         path: "/trip",
-        element: <Trips />,
+        element: (
+            <React.Suspense fallback={<div>Loading Trips...</div>}>
+                <Trips />
+            </React.Suspense>
+        ),
+    },
+    {
+        path: "/about",
+        element: (
+            <React.Suspense fallback={<div>Loading Trips...</div>}>
+                <About />
+            </React.Suspense>
+        ),
     },
 ]);
 

@@ -9,8 +9,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        blackrush: ['Blackrush', 'sans-serif'], // Add your font family here
-      },
+        rogthem: ['__rogthem_9bf312', '__rogthem_Fallback_9bf312', 'sans-serif'],
+      }
     },
   },
   plugins: [],
