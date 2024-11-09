@@ -29,7 +29,7 @@ import keralaImage from '../../assets/Kerala.jpg';
 const AdventureTravel = () => {
     return (
         <div
-            className="relative w-full h-80 bg-cover bg-center rounded-3xl"
+            className="relative w-full h-80 bg-cover bg-center rounded-3xl mt-16"
             style={{ backgroundImage: `url(${keralaImage})` }}
         >
             {/* Overlay */}

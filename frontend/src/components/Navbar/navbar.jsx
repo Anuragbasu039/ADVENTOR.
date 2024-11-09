@@ -1,89 +1,68 @@
-import React, { useState, useRef, useEffect } from 'react';
-import logo from '../../assets/adventure logo.png';
+import React, { useState } from "react";
+import { FiMenu, FiX } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function Home() {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
-    const dropdownRef = useRef(null);
+const Navbar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
 
-    const toggleDropdown = () => {
-        setIsDropdownOpen((prev) => !prev);
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
     };
 
-    const toggleMobileMenu = () => {
-        setIsMobileMenuOpen((prev) => !prev);
+    const handleLogout = async () => {
+        console.log("Logout button clicked");
+        try {
+            console.log("Logging out...");
+            // Send the logout request to the backend to invalidate the session
+            await axios.post("http://localhost:8000/api/auth/logout", {}, { withCredentials: true });
+
+            // Remove the token from cookies and localStorage/sessionStorage
+            document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+            localStorage.removeItem("token"); // If the token is stored in localStorage
+            sessionStorage.removeItem("token"); // If the token is stored in sessionStorage
+
+            // Use React Router's navigate to redirect without page reload
+            navigate("/signin");
+        } catch (error) {
+            console.error("Error logging out:", error);
+            alert("An error occurred while logging out. Please try again.");
+        }
     };
 
-    const toggleServicesDropdown = () => {
-        setIsServicesDropdownOpen((prev) => !prev);
-    };
 
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                setIsDropdownOpen(false);
-                setIsServicesDropdownOpen(false);
-            }
-        };
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
+
 
     return (
-        <div>
-            {/* Navbar Wrapper with margin */}
-            <div className="mt-5">
-                {/* Sticky Navbar */}
-                <nav className="sticky top-5 z-50 border-gray-200 dark:bg-gray-900 rounded-full">
-                    <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                        <a href="/home" className="flex items-center space-x-3 rtl:space-x-reverse">
-                            <img src={logo} className="w-48" alt="Logo"  />
-                        </a>
-                        <div className={`items-center justify-between ${isMobileMenuOpen ? '' : 'hidden'} w-full md:flex md:w-auto md:order-1`} id="navbar-user">
-                            <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                                <li>
-                                    <a href="/home" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500" aria-current="page">Home</a>
-                                </li>
-                                <li>
-                                    <a href="/about" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
-                                </li>
-                                <li className="relative">
-                                    <button onClick={toggleServicesDropdown} className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
-                                        Services 👇
-                                    </button>
-                                    {isServicesDropdownOpen && (
-                                        <ul className="absolute left-0 mt-2 w-44 text-sm list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
-                                            <li>
-                                                <a href="/trip" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">Service 1</a>
-                                            </li>
-                                            <li>
-                                                <a href="/service2" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">Service 2</a>
-                                            </li>
-                                            <li>
-                                                <a href="/service3" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-white">Service 3</a>
-                                            </li>
-                                        </ul>
-                                    )}
-                                </li>
-                                <li>
-                                    <a href="/register" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Register</a>
-                                </li>
-                                <li>
-                                    <a href="/contact" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
-                                </li>
-                                <button className="bg-black rounded-2xl w-24 h-7">
-                                    <a href="/signin" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 text-white">Logout</a>
-                                </button>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    );
-}
+        <nav className="flex items-center justify-between p-4 shadow-lg bg-white rounded-full mx-4 lg:mx-auto lg:max-w-5xl relative">
+            <div className="text-3xl font-bold text-teal-600 ml-4">Adventor.</div>
 
-export default Home;
+            <div className="lg:hidden flex items-center">
+                <button onClick={toggleMenu} className="text-teal-600 text-3xl">
+                    {isOpen ? <FiX /> : <FiMenu />}
+                </button>
+            </div>
+
+            <div className={`lg:flex lg:items-center lg:justify-center ${isOpen ? "block" : "hidden"} transition-all duration-300 lg:block absolute lg:static top-16 left-0 w-full lg:w-auto bg-white lg:bg-transparent shadow-lg lg:shadow-none rounded-lg`}>
+                <ul className="flex flex-col items-center space-y-4 lg:space-y-0 lg:flex-row lg:space-x-8 text-gray-700 py-4 lg:py-0">
+                    <li className="hover:text-gray-900 cursor-pointer">Home</li>
+                    <li className="hover:text-gray-900 cursor-pointer">Activities</li>
+                    <li className="hover:text-gray-900 cursor-pointer">Register</li>
+                    <li className="hover:text-gray-900 cursor-pointer">Safety</li>
+                    <li className="hover:text-gray-900 cursor-pointer">Gallery</li>
+                    <li className="hover:text-gray-900 cursor-pointer">Contact</li>
+                </ul>
+                <button className="block lg:hidden bg-teal-600 text-white py-2 px-6 rounded-full mt-4" onClick={handleLogout}>
+                    Log Out
+                </button>
+            </div>
+
+            <button className="hidden lg:block bg-teal-600 text-white py-2 px-6 rounded-full" onClick={handleLogout}>
+                Log Out
+            </button>
+        </nav>
+    );
+};
+
+export default Navbar;

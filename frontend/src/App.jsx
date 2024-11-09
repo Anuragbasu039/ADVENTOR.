@@ -1,14 +1,14 @@
 
 import './App.css'
-import Signin from './pages/signIn.jsx'
-
+import SignIn from "./pages/signIn.jsx";
+// import Signin from './pages/signIn.jsx'
+// import Home from './pages/Home/home.jsx'
 function App() {
 
 
   return (
       <>
-          <Signin/>
-
+          <SignIn />
       </>
   )
 }

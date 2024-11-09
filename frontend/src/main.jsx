@@ -1,11 +1,13 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
+// src/index.jsx
+import * as React from 'react';
+import * as ReactDOM from 'react-dom/client';
 import {
     createBrowserRouter,
     RouterProvider,
-} from "react-router-dom";
-import "./index.css";
-import App from './App.jsx'; // Main App component
+} from 'react-router-dom';
+import './index.css';
+import App from './App.jsx';
+// import Logout from "./components/logout.jsx"; // Main App component
 
 // Lazy load the components
 const SignIn = React.lazy(() => import('./pages/signIn.jsx'));
@@ -15,7 +17,9 @@ const Contact = React.lazy(() => import('./components/Contact/contact.jsx'));
 const Register = React.lazy(() => import('./components/Registerform/register.jsx'));
 const Checkform = React.lazy(() => import('./components/Checkform/checkform.jsx'));
 const Trips = React.lazy(() => import('./components/Trips/trips.jsx'));
-const About = React.lazy(() =>import ('./components/About/about.jsx'));
+const About = React.lazy(() => import('./components/About/about.jsx'));
+
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -40,9 +44,11 @@ const router = createBrowserRouter([
     {
         path: "/home",
         element: (
-            <React.Suspense fallback={<div>Loading Home...</div>}>
-                <Home />
-            </React.Suspense>
+
+                <React.Suspense fallback={<div>Loading Home...</div>}>
+                    <Home />
+                </React.Suspense>
+
         ),
     },
     {
@@ -85,6 +91,7 @@ const router = createBrowserRouter([
             </React.Suspense>
         ),
     },
+
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

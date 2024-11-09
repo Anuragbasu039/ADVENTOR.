@@ -1,5 +1,6 @@
 import * as React from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
@@ -14,8 +15,6 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
-import ForgotPassword from '../pages/ForgotPassword.jsx';
-import { GoogleIcon, FacebookIcon } from '../pages/CustomIcons.jsx';
 
 const Card = styled(MuiCard)(({ theme }) => ({
     display: 'flex',
@@ -52,20 +51,20 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
 }));
 
 export default function SignIn() {
+    const navigate = useNavigate();
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const [emailError, setEmailError] = React.useState('');
     const [passwordError, setPasswordError] = React.useState('');
-    const [open, setOpen] = React.useState(false);
     const [isFormValid, setIsFormValid] = React.useState(false);
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
+    // Redirect to home if token exists
+    React.useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            navigate('/home'); // Redirect to home if user is already logged in
+        }
+    }, [navigate]);
 
     const validateInputs = () => {
         let valid = true;
@@ -109,17 +108,15 @@ export default function SignIn() {
                 );
 
                 if (response.data.success) {
-                    console.log('Sign in successful:', response.data.message);
-                    // Optionally store the token
-                    // localStorage.setItem('token', response.data.token);
-                    // Redirect to home page or dashboard
-                    window.location.href = '/home'; // redirect after successful sign-in
+                    // Save token to localStorage if login is successful
+                    localStorage.setItem('token', response.data.token);
+
+                    // Redirect to the home page
+                    navigate('/home');
                 } else {
-                    console.log('Sign in error:', response.data.message);
-                    setEmailError(response.data.message); // Set message from server
+                    setEmailError(response.data.message);
                 }
             } catch (error) {
-                console.error('Error during sign-in:', error);
                 setEmailError('Failed to sign in. Please try again.');
             }
         }
@@ -166,18 +163,7 @@ export default function SignIn() {
                         />
                     </FormControl>
                     <FormControl>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <FormLabel htmlFor="password">Password</FormLabel>
-                            <Link
-                                component="button"
-                                type="button"
-                                onClick={handleClickOpen}
-                                variant="body2"
-                                sx={{ alignSelf: 'baseline' }}
-                            >
-                                Forgot your password?
-                            </Link>
-                        </Box>
+                        <FormLabel htmlFor="password">Password</FormLabel>
                         <TextField
                             error={Boolean(passwordError)}
                             helperText={passwordError}
@@ -197,9 +183,7 @@ export default function SignIn() {
                         control={<Checkbox value="remember" color="primary" />}
                         label="Remember me"
                     />
-                    <ForgotPassword open={open} handleClose={handleClose} />
                     <Button
-
                         type="submit"
                         fullWidth
                         variant="contained"
@@ -209,35 +193,10 @@ export default function SignIn() {
                     </Button>
                     <Typography sx={{ textAlign: 'center' }}>
                         Don&apos;t have an account?{' '}
-                        <span>
-                            <Link
-                                href="/signup"
-                                variant="body2"
-                                sx={{ alignSelf: 'center' }}
-                            >
-                                Sign up
-                            </Link>
-                        </span>
+                        <Link href="/signup" variant="body2">
+                            Sign up
+                        </Link>
                     </Typography>
-                </Box>
-                <Divider>or</Divider>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                    <Button
-                        fullWidth
-                        variant="outlined"
-                        onClick={() => alert('Sign in with Google')}
-                        startIcon={<GoogleIcon />}
-                    >
-                        Sign in with Google
-                    </Button>
-                    <Button
-                        fullWidth
-                        variant="outlined"
-                        onClick={() => alert('Sign in with Facebook')}
-                        startIcon={<FacebookIcon />}
-                    >
-                        Sign in with Facebook
-                    </Button>
                 </Box>
             </Card>
         </SignInContainer>

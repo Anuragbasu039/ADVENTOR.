@@ -148,8 +148,32 @@ const googleLogin = async (req, res) => {
     }
 };
 
+const Logout = (req, res) => {
+    try {
+        // Clear the token cookie
+        res.clearCookie('token', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict',
+        });
+
+        return res.status(200).json({
+            success: true,
+            message: "Logout successful",
+        });
+    } catch (error) {
+        console.error("Logout error:", error);
+        return res.status(500).json({
+            success: false,
+            message: "An error occurred during logout. Please try again later.",
+        });
+    }
+};
+
+
 module.exports = {
     Signup,
     SignIn,
     googleLogin,
+    Logout,
 };

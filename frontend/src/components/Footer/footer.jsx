@@ -45,11 +45,11 @@ const Footer = () => {
                 <div className="mb-6 md:mb-0 text-center md:text-left">
                     <h2 className="text-lg font-semibold mb-4 text-teal-600">Useful Links</h2>
                     <ul className="text-black space-y-2">
-                        <li><a href="#" className="hover:text-teal-600">Home</a></li>
+                        <li><a href="/home" className="hover:text-teal-600">Home</a></li>
                         <li><a href="/about" className="hover:text-teal-600">About</a></li>
-                        <li><a href="#" className="hover:text-teal-600">Adventures</a></li>
+                        <li><a href="/trip" className="hover:text-teal-600">Adventures</a></li>
                         <li><a href="#" className="hover:text-teal-600">Blog</a></li>
-                        <li><a href="#" className="hover:text-teal-600">Contact</a></li>
+                        <li><a href="/contact" className="hover:text-teal-600">Contact</a></li>
                     </ul>
                 </div>
 

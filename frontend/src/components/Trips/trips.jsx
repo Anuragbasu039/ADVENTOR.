@@ -4,67 +4,45 @@ import React from 'react';
 import shimlaImage from '../../assets/shimla.png';
 import manaliImage from '../../assets/manali.png';
 import nanitalImage from '../../assets/nanital.png';
-// import outdoorcamp from '../../assets/outdoorcamp.png';
-// import Footer from '../../components/Footer/Footer';
+import Footer from '../../components/Footer/Footer';
 import { Link } from 'react-router-dom';
-
+import Canoeing from '../../assets/Canoeing.jpg'
+import Zipling from '../../assets/Zip Lines.jpg'
+import Bungeejumping from '../../assets/Bungee Jump.jpg'
+import Paragliding from '../../assets/paragliding.webp'
+import Rafting from '../../assets/rafting.jpeg'
+import Skydriving from '../../assets/skydriving.jpg'
 const destinations = [
     {
-        name: "Shimla",
-        title: "Queen Of Hills",
-        img: shimlaImage,
-        days: 3,
-        nights: 2,
-        link: "/shimla"
+        name: "Zipling",
+        img: Zipling,
+        link: "/zipling"
     },
     {
-        name: "Manali",
-        title: "Valley Of The Gods",
-        img: manaliImage,
-        days: 3,
-        nights: 2,
-        link: "/manali"
+        name: "Bungee Jumping",
+        img: Bungeejumping,
+        link: "/bungeejumping"
     },
     {
-        name: "Nanital",
-        title: "The City Of Lakes",
-        img: nanitalImage,
-        days: 3,
-        nights: 2,
-        link: "/nanital"
+        name: "Paragliding",
+        img: Paragliding,
+        link: "/paragliding"
     },
     {
-        name: "Nanital",
-        title: "The City Of Lakes",
-        img: nanitalImage,
-        days: 3,
-        nights: 2,
-        link: "/nanital"
+        name: "Canoeing",
+        img: Canoeing,
+        link: "/canoeing"
     },
     {
-        name: "Nanital",
-        title: "The City Of Lakes",
-        img: nanitalImage,
-        days: 3,
-        nights: 2,
-        link: "/nanital"
+        name: "Rafting",
+        img: Rafting,
+        link: "/rafting"
     },
     {
-        name: "Nanital",
-        title: "The City Of Lakes",
-        img: nanitalImage,
-        days: 3,
-        nights: 2,
-        link: "/nanital"
+        name: "Skydriving",
+        img: Skydriving,
+        link: "/skydriving"
     },
-    {
-        name: "Nanital",
-        title: "The City Of Lakes",
-        img: nanitalImage,
-        days: 3,
-        nights: 2,
-        link: "/nanital"
-    }
 ];
 
 const MasterPioneer = () => {
@@ -73,9 +51,9 @@ const MasterPioneer = () => {
             <div className="text-center font-sans">
                 <header>
                     {/*<img src={outdoorcamp} alt="Outdoor Camp Logo" className="w-52 mb-5" />*/}
-                    <h1 className="mt-[-20px] text-2xl font-bold">Master Pioneer</h1>
+                    <h1 className="mt-[-20px] text-5xl font-bold text-teal-600">Adventures</h1>
                 </header>
-                <div className="flex justify-center gap-24 mb-5 flex-wrap">
+                <div className="flex justify-center gap-24 mb-5 flex-wrap mt-16">
                     {destinations.map((destination) => (
                         <Link
                             to={destination.link}
@@ -88,16 +66,16 @@ const MasterPioneer = () => {
                                 className="mt-5 w-4/5 h-30 object-cover mx-auto"
                             />
                             <h2 className="mt-2 text-xl font-semibold">{destination.name}</h2>
-                            <p className="text-gray-500 text-sm italic">{`"${destination.title}"`}</p>
-                            <div className="flex justify-center gap-3 mt-2 text-lg">
-                                <span className="flex items-center">☀️ {destination.days} days</span>
-                                <span className="flex items-center">🌙 {destination.nights} nights</span>
-                            </div>
+                            {/*<p className="text-gray-500 text-sm italic">{`"${destination.title}"`}</p>*/}
+                            {/*<div className="flex justify-center gap-3 mt-2 text-lg">*/}
+                            {/*    <span className="flex items-center">☀️ {destination.days} days</span>*/}
+                            {/*    <span className="flex items-center">🌙 {destination.nights} nights</span>*/}
+                            {/*</div>*/}
                         </Link>
                     ))}
                 </div>
             </div>
-            {/*<Footer />*/}
+            <Footer />
         </>
     );
 };
