@@ -139,9 +139,7 @@ export default function SignUp(props) {
         validateInputs();
     };
 
-    const handleGoogleLogin = () => {
-        window.open("http://localhost:8000/api/auth/google", "_self");
-    };
+
 
     return (
         <SignInContainer direction="column" justifyContent="space-between">
@@ -206,15 +204,7 @@ export default function SignUp(props) {
                         </span>
                     </Typography>
                 </Box>
-                <Divider>or</Divider>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                    <Button fullWidth variant="outlined" onClick={handleGoogleLogin} startIcon={<GoogleIcon />}>
-                        Sign in with Google
-                    </Button>
-                    <Button fullWidth variant="outlined" onClick={() => alert('Sign in with Facebook')} startIcon={<FacebookIcon />}>
-                        Sign in with Facebook
-                    </Button>
-                </Box>
+
             </Card>
         </SignInContainer>
     );

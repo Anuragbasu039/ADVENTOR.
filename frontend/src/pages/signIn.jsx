@@ -1,4 +1,5 @@
-import * as React from 'react';
+// src/pages/signIn.jsx
+import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
@@ -6,7 +7,6 @@ import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import CssBaseline from '@mui/material/CssBaseline';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Divider from '@mui/material/Divider';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import Link from '@mui/material/Link';
@@ -50,7 +50,7 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
     },
 }));
 
-export default function SignIn() {
+function SignIn() {
     const navigate = useNavigate();
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -58,11 +58,10 @@ export default function SignIn() {
     const [passwordError, setPasswordError] = React.useState('');
     const [isFormValid, setIsFormValid] = React.useState(false);
 
-    // Redirect to home if token exists
     React.useEffect(() => {
         const token = localStorage.getItem('token');
         if (token) {
-            navigate('/home'); // Redirect to home if user is already logged in
+            navigate('/home');
         }
     }, [navigate]);
 
@@ -108,10 +107,7 @@ export default function SignIn() {
                 );
 
                 if (response.data.success) {
-                    // Save token to localStorage if login is successful
                     localStorage.setItem('token', response.data.token);
-
-                    // Redirect to the home page
                     navigate('/home');
                 } else {
                     setEmailError(response.data.message);
@@ -126,24 +122,10 @@ export default function SignIn() {
         <SignInContainer direction="column" justifyContent="space-between">
             <CssBaseline enableColorScheme />
             <Card variant="outlined">
-                <Typography
-                    component="h1"
-                    variant="h4"
-                    sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
-                >
+                <Typography component="h1" variant="h4" sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}>
                     Sign in
                 </Typography>
-                <Box
-                    component="form"
-                    onSubmit={handleSubmit}
-                    noValidate
-                    sx={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        width: '100%',
-                        gap: 2,
-                    }}
-                >
+                <Box component="form" onSubmit={handleSubmit} noValidate sx={{ display: 'flex', flexDirection: 'column', width: '100%', gap: 2 }}>
                     <FormControl>
                         <FormLabel htmlFor="email">Email</FormLabel>
                         <TextField
@@ -179,26 +161,17 @@ export default function SignIn() {
                             onChange={handleInputChange}
                         />
                     </FormControl>
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                    />
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        disabled={!isFormValid}
-                    >
+                    <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
+                    <Button type="submit" fullWidth variant="contained" disabled={!isFormValid}>
                         Sign in
                     </Button>
                     <Typography sx={{ textAlign: 'center' }}>
-                        Don&apos;t have an account?{' '}
-                        <Link href="/signup" variant="body2">
-                            Sign up
-                        </Link>
+                        Don&apos;t have an account? <Link href="/signup" variant="body2">Sign up</Link>
                     </Typography>
                 </Box>
             </Card>
         </SignInContainer>
     );
 }
+
+export default SignIn; // Ensure SignIn is the default export

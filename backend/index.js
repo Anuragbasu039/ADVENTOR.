@@ -32,37 +32,11 @@ app.use(session({
     saveUninitialized: true,
 }));
 
-// Initialize Passport
-app.use(passport.initialize());
-app.use(passport.session());
 
-// Google Strategy
-passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:8000/api/auth/google/callback",
-}, async (accessToken, refreshToken, profile, done) => {
-    try {
-        if (!profile || !profile.emails || !profile.emails.length) {
-            return done(null, false, { message: "No email found in Google profile" });
-        }
-        const user = {
-            id: profile.id,
-            displayName: profile.displayName,
-            email: profile.emails[0].value,
-        };
-        done(null, user);
-    } catch (err) {
-        done(err, null);
-    }
-}));
 
-passport.serializeUser((user, done) => {
-    done(null, user);
-});
-passport.deserializeUser((user, done) => {
-    done(null, user);
-});
+
+
+
 
 // JSON parsing middleware
 app.use(express.json());

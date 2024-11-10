@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Importing useNavigate for navigation
 import logo from "../../assets/adventure logo.png";
-import Navbar from '../Navbar/navbar.jsx';
+import Footer from "../Footer/footer.jsx";
+// import Navbar from '../Navbar/navbar.jsx';
 // import axios from 'axios'; // Import axios
 
 const AdventureForm = () => {
@@ -54,7 +55,7 @@ const AdventureForm = () => {
 
     return (
         <>
-            <Navbar />
+            {/*<Navbar />*/}
             <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
                 <header className="text-center mb-6">
                     <div className="flex justify-center items-center mb-2">
@@ -299,6 +300,7 @@ const AdventureForm = () => {
                     </div>
                 </form>
             </div>
+            <Footer />
         </>
     );
 };

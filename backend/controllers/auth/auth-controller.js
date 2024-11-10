@@ -99,55 +99,6 @@ const SignIn = async (req, res) => {
     }
 };
 
-// Google Login
-const googleLogin = async (req, res) => {
-    if (!req.user) {
-        return res.status(400).json({
-            success: false,
-            message: "No user information returned from Google.",
-        });
-    }
-
-    const user = req.user; // req.user will contain the authenticated user from Passport
-    try {
-        let existingUser = await User.findOne({ email: user.email });
-
-        if (!existingUser) {
-            existingUser = new User({
-                email: user.email,
-                password: null, // Google users typically don’t have a password
-            });
-            await existingUser.save();
-        }
-
-        const token = jwt.sign(
-            {
-                id: existingUser._id,
-                email: existingUser.email,
-            },
-            process.env.CLIENT_SECRET_KEY,
-            { expiresIn: '1h' }
-        );
-
-        // Set the token in a cookie
-        res.cookie('token', token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === 'production',
-            sameSite: 'strict',
-            maxAge: 3600000,
-        });
-
-        // Redirect to frontend home page
-        res.redirect("http://localhost:5173/home");
-    } catch (error) {
-        console.error("Google login error:", error);
-        res.status(500).json({
-            success: false,
-            message: "An internal server error occurred. Please try again later.",
-        });
-    }
-};
-
 const Logout = (req, res) => {
     try {
         // Clear the token cookie
@@ -174,6 +125,5 @@ const Logout = (req, res) => {
 module.exports = {
     Signup,
     SignIn,
-    googleLogin,
     Logout,
 };
