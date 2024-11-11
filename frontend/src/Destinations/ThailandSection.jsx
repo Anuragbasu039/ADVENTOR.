@@ -3,7 +3,7 @@ import thailandImage from '../assets/thailand4.webp';
 
 import Thailand2 from '../assets/thailand3.webp';
 import Thailand3 from '../assets/thailand.webp';
-// import Thailand4 from '../assets/thailand2.webp'
+
 import Footer from "../components/Footer/footer.jsx";
 const trips = [
     {
