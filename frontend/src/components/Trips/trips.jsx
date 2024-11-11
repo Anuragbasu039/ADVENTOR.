@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from '../../components/Footer/Footer'; // Correct path
+import Footer from '../../components/Footer/footer.jsx'; // Correct path
 import { Link } from 'react-router-dom';
 import Canoeing from '../../assets/Canoeing.jpg';
 import Zipling from '../../assets/Zip Lines.jpg';
