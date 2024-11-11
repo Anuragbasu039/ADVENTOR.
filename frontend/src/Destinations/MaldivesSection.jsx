@@ -1,5 +1,5 @@
 import React from 'react';
-import Maldives1 from '../assets/maldives1.jpg';
+import Maldives1 from '../assets/maldives1.jpg';  // Make sure this path is correct
 import Maldives2 from '../assets/maldives2.webp';
 import Maldives3 from '../assets/maldives3.webp';
 import Maldives4 from '../assets/maldives4.webp';
