@@ -1,13 +1,14 @@
 import React from 'react';
-import Thailand1 from '../assets/thailand4.webp';
+import thailandImage from '../assets/thailand4.webp';
+
 import Thailand2 from '../assets/thailand3.webp';
 import Thailand3 from '../assets/thailand.webp';
-import Thailand4 from '../assets/thailand2.webp'
+// import Thailand4 from '../assets/thailand2.webp'
 import Footer from "../components/Footer/footer.jsx";
 const trips = [
     {
         id: 1,
-        image: Thailand1,
+        image: thailandImage,
         title: 'Dubai with Ferrari World',
         nights: '4 Nights 5 Days',
         price: '₹ 41500',
@@ -34,7 +35,7 @@ const trips = [
     },
     {
         id: 4,
-        image: Thailand4,
+        image: thailandImage,
         title: 'Dubai with Adventure Activities',
         nights: '5 Nights 6 Days',
         price: '₹ 54500',
