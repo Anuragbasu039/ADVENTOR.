@@ -1,5 +1,6 @@
 import React from 'react';
-import Vietnam1 from '../assets/vietnam1.webp';
+import vietnamImage from '../assets/vietnam1.webp';
+
 import Vietnam2 from '../assets/vietnam2.webp';
 import Vietnam3 from '../assets/vietnam3.webp';
 import Vietnam4 from '../assets/vietnam4.webp'
@@ -7,7 +8,7 @@ import Footer from "../components/Footer/footer.jsx";
 const trips = [
     {
         id: 1,
-        image: Vietnam1,
+        image: vietnamImage,
         title: 'Dubai with Ferrari World',
         nights: '4 Nights 5 Days',
         price: '₹ 41500',
