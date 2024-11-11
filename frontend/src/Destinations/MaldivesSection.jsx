@@ -2,8 +2,9 @@ import React from 'react';
 import Maldives1 from '../assets/maldives1.jpg';
 import Maldives2 from '../assets/maldives2.webp';
 import Maldives3 from '../assets/maldives3.webp';
-import Maldives4 from '../assets/maldives4.webp'
+import Maldives4 from '../assets/maldives4.webp';
 import Footer from "../components/Footer/footer.jsx";
+
 const trips = [
     {
         id: 1,
@@ -49,8 +50,8 @@ export default function MaldivesPage() {
             {/* Header Section */}
             <div className="relative w-full h-[500px]">
                 <img
-                    src={Maldives3} // Replace with actual image path
-                    alt="Thailand"
+                    src={Maldives3}
+                    alt="Maldives"
                     className="w-full h-full object-cover rounded-3xl"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
