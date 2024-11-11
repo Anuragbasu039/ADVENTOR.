@@ -1,10 +1,9 @@
 import React from 'react';
 import thailandImage from '../assets/thailand4.webp';
-
 import Thailand2 from '../assets/thailand3.webp';
 import Thailand3 from '../assets/thailand.webp';
-
 import Footer from "../components/Footer/footer.jsx";
+
 const trips = [
     {
         id: 1,
@@ -47,10 +46,9 @@ const trips = [
 export default function ThailandPage() {
     return (
         <div className="flex flex-col items-center">
-            {/* Header Section */}
             <div className="relative w-full h-[500px]">
                 <img
-                    src={Thailand2} // Replace with actual image path
+                    src={Thailand2}
                     alt="Thailand"
                     className="w-full h-full object-cover rounded-3xl"
                 />
@@ -61,9 +59,7 @@ export default function ThailandPage() {
                 </div>
             </div>
 
-            {/* Main Content */}
             <div className="flex flex-col md:flex-row p-4 space-y-6 md:space-y-0 md:space-x-8 max-w-7xl mx-auto">
-                {/* Trip Cards Section */}
                 <div className="flex flex-col space-y-4 w-full md:w-2/3">
                     {trips.map((trip) => (
                         <div
@@ -94,7 +90,6 @@ export default function ThailandPage() {
                     ))}
                 </div>
 
-                {/* Contact Form */}
                 <div className="w-full md:w-1/3">
                     <form className="bg-white p-6 rounded-lg shadow-md space-y-4 max-w-md">
                         <h2 className="text-xl font-semibold text-gray-800">
