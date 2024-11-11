@@ -1,6 +1,7 @@
 import React from 'react';
 import Dubai1 from '../assets/dubai.webp';
-import Dubai2 from '../assets/dubai2.webp';
+import dubaiImage from '../assets/dubai2.webp';
+
 import Dubai3 from '../assets/dubai3.webp';
 import Dubai4 from '../assets/dubai4.webp'
 import Footer from "../components/Footer/footer.jsx";
@@ -16,7 +17,7 @@ const trips = [
     },
     {
         id: 2,
-        image: Dubai2,
+        image: dubaiImage,
         title: 'Dubai',
         nights: '4 Nights 5 Days',
         price: '₹ 54500',
