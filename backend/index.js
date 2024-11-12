@@ -2,9 +2,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const passport = require("passport");
+
 const session = require("express-session");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+
 const authRouter = require("./routes/auth/auth-routes");
 const contact = require("./routes/contact/contact")
 const register = require("./routes/registerform/register")
