@@ -12,17 +12,17 @@ const CheckForm = () => {
     // Handle final submit
     const handleFinalSubmit = async () => {
         try {
+            const API_BASE_URL = window.location.hostname === "localhost"
+                ? "http://localhost:8000"
+                : "https://adventor-r9jp.onrender.com";
 
-            // Send the data to the backend using Axios (no agreement field)
-            const response = await axios.post("http://localhost:8000/api/form/register", formData);
+            const response = await axios.post(`${API_BASE_URL}/api/form/register`, formData);
 
-            // If the request is successful, navigate to a success page or confirmation page
             console.log("Registration successful:", response.data);
             navigate("/checkform"); // Assuming you have a /success route
-
         } catch (error) {
             console.error("Error submitting form:", error);
-            // Handle the error as needed (e.g., show a message to the user)
+            alert("Error submitting form. Please try again.");
         }
     };
 
@@ -149,7 +149,6 @@ const CheckForm = () => {
                     >
                         Submit
                     </button>
-                    {/* Print button */}
                     <button
                         onClick={handlePrint}
                         className="px-6 py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700"

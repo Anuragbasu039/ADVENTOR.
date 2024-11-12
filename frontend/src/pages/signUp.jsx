@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
 import CssBaseline from '@mui/material/CssBaseline';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Divider from '@mui/material/Divider';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import Link from '@mui/material/Link';
@@ -14,7 +13,7 @@ import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
 import ForgotPassword from '../pages/ForgotPassword.jsx';
-import { GoogleIcon, FacebookIcon } from '../pages/CustomIcons.jsx';
+
 import axios from 'axios'; // Import Axios
 
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -50,6 +49,11 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
         backgroundRepeat: 'no-repeat',
     },
 }));
+
+// Define the API_BASE_URL based on the environment
+const API_BASE_URL = window.location.hostname === 'localhost'
+    ? 'http://localhost:8000'
+    : 'https://adventor-r9jp.onrender.com';
 
 export default function SignUp(props) {
     const [email, setEmail] = React.useState('');
@@ -99,7 +103,10 @@ export default function SignUp(props) {
         event.preventDefault();
         if (validateInputs()) {
             try {
-                const response = await axios.post('http://localhost:8000/api/auth/signup', { email, password });
+                const response = await axios.post(
+                    `${API_BASE_URL}/api/auth/signup`, // Use the dynamic API base URL
+                    { email, password }
+                );
                 if (response.data.success) {
                     alert("Signup Successful");
                 } else {
@@ -138,8 +145,6 @@ export default function SignUp(props) {
 
         validateInputs();
     };
-
-
 
     return (
         <SignInContainer direction="column" justifyContent="space-between">
@@ -204,7 +209,6 @@ export default function SignUp(props) {
                         </span>
                     </Typography>
                 </Box>
-
             </Card>
         </SignInContainer>
     );

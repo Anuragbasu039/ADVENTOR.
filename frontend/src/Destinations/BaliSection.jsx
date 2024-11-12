@@ -73,8 +73,11 @@ export default function BaliPage() {
         //     "travellers": "12",
         //     "message": "testing"
         // }
+        const API_BASE_URL = window.location.hostname === "localhost"
+            ? "http://localhost:8000"
+            : "https://adventor-r9jp.onrender.com";
         try {
-            const response = await axios.post('http://localhost:8000/api/details/', formData, {
+            const response = await axios.post(`${API_BASE_URL}/api/details/`, formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },

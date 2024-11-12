@@ -2,6 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+// Import useMutation from react-query
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
@@ -50,6 +51,11 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
     },
 }));
 
+// Define the API_BASE_URL based on the environment
+const API_BASE_URL = window.location.hostname === 'localhost'
+    ? 'http://localhost:8000'
+    : 'https://adventor-r9jp.onrender.com';
+
 function SignIn() {
     const navigate = useNavigate();
     const [email, setEmail] = React.useState('');
@@ -96,25 +102,35 @@ function SignIn() {
         validateInputs();
     };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        if (validateInputs()) {
-            try {
-                const response = await axios.post(
-                    'http://localhost:8000/api/auth/signin',
-                    { email, password },
-                    { withCredentials: true }
-                );
-
-                if (response.data.success) {
-                    localStorage.setItem('token', response.data.token);
+    // API call using react-query's useMutation
+    const { mutate: signIn, isLoading, error } = useMutation(
+        async () => {
+            const response = await axios.post(
+                `${API_BASE_URL}/api/auth/signin`, // Use the dynamic API base URL
+                { email, password },
+                { withCredentials: true }
+            );
+            return response.data;
+        },
+        {
+            onSuccess: (data) => {
+                if (data.success) {
+                    localStorage.setItem('token', data.token);
                     navigate('/home');
                 } else {
-                    setEmailError(response.data.message);
+                    setEmailError(data.message);
                 }
-            } catch (error) {
+            },
+            onError: () => {
                 setEmailError('Failed to sign in. Please try again.');
-            }
+            },
+        }
+    );
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (validateInputs()) {
+            signIn(); // Trigger the mutation
         }
     };
 
@@ -162,8 +178,8 @@ function SignIn() {
                         />
                     </FormControl>
                     <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
-                    <Button type="submit" fullWidth variant="contained" disabled={!isFormValid}>
-                        Sign in
+                    <Button type="submit" fullWidth variant="contained" disabled={!isFormValid || isLoading}>
+                        {isLoading ? 'Signing in...' : 'Sign in'}
                     </Button>
                     <Typography sx={{ textAlign: 'center' }}>
                         Don&apos;t have an account? <Link href="/signup" variant="body2">Sign up</Link>
