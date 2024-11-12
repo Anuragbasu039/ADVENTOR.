@@ -11,6 +11,7 @@ import App from './App.jsx';
 import ThailandPage from "./Destinations/ThailandSection.jsx";
 import VietnamPage from "./Destinations/VietnamSection.jsx";
 import MaldivesPage from "./Destinations/MaldivesSection.jsx";
+import BaliPage from "./Destinations/BaliSection.jsx";
 
 // Lazy load the components
 const SignIn = React.lazy(() => import('./pages/signIn.jsx'));
@@ -159,6 +160,16 @@ const router = createBrowserRouter([
             </PrivateRoute>
         ),
     },
+    {
+        path: "/bali",
+        element: (
+            <PrivateRoute>
+                <React.Suspense fallback={<div>Loading About...</div>}>
+                    <BaliPage />
+                </React.Suspense>
+            </PrivateRoute>
+        ),
+    }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
