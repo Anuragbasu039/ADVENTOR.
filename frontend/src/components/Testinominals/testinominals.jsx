@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import pic1 from '../../assets/anurag.png';
-
+import pic2 from '../../assets/Ankit.jpg'
 const testimonials = [
     {
         id: 1,
@@ -14,7 +14,7 @@ const testimonials = [
         id: 2,
         name: 'Ankit Bose',
         title: 'UI/UX Designer',
-        image: pic1,
+        image: pic2,
         feedback:
             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et euismod ligula. Morbi mattis pretium eros, ut mollis leo tempor eget.',
     },

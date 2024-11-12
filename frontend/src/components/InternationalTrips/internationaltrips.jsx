@@ -6,10 +6,10 @@ import Dubai from '../../assets/dubai.webp';
 import Azerbaizan from '../../assets/Azerbaizan.webp';
 
 const destinations = [
-    { name: 'Singapour', img: Singapour, path: '/north-east' },
-    { name: 'Malaysia', img: Malaysia, path: '/andaman' },
-    { name: 'Dubai', img: Dubai, path: '/himachal-pradesh' },
-    { name: 'Azerbaizan', img: Azerbaizan, path: '/goa' },
+    { name: 'Singapour', img: Singapour, path: '/singapour' },
+    { name: 'Malaysia', img: Malaysia, path: '/malaysia' },
+    { name: 'Dubai', img: Dubai, path: '/dubai' },
+    { name: 'Azerbaizan', img: Azerbaizan, path: '/azerbaizan' },
     // Add more items with corresponding paths if needed
 ];
 
@@ -70,25 +70,25 @@ const Slider = () => {
                 </button>
 
                 {/* Slider Container */}
-                <div className="overflow-hidden w-full px-6"> {/* Padding for partial view */}
+                <div className="overflow-hidden w-full px-4 sm:px-6"> {/* Added more padding for small screens */}
                     <div
                         className="flex transition-transform duration-700 ease-in-out"
                         style={{
-                            transform: `translateX(-${(currentIndex - destinations.length) * 10}%)`,
-                            width: `${extendedDestinations.length * 10}%`, // Adjust width for the duplicated slides
+                            transform: `translateX(-${(currentIndex - destinations.length) * 100 / extendedDestinations.length}%)`,
+                            width: '100%', // Adjust width for the duplicated slides
                         }}
                     >
                         {extendedDestinations.map((destination, index) => (
                             <div
                                 key={index}
-                                className="flex-none w-1/4 px-2 cursor-pointer"
+                                className="flex-none w-3/4 sm:w-1/4 px-2 cursor-pointer"
                                 onClick={() => navigate(destination.path)} // Navigate on click
                             >
                                 <div className="relative rounded-lg overflow-hidden shadow-lg">
                                     <img
                                         src={destination.img}
                                         alt={destination.name}
-                                        className="w-full h-64 object-cover"
+                                        className="w-full h-64 sm:h-48 object-cover"
                                     />
                                     <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white text-center py-2">
                                         {destination.name}

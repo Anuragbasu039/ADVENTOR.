@@ -65,8 +65,16 @@ export default function BaliPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
+        // const myform = {
+        //     "name": "Abdul",
+        //     "email": "anurag@gmail.com",
+        //     "address": "jhansi",
+        //     "number": "9580214684",
+        //     "travellers": "12",
+        //     "message": "testing"
+        // }
         try {
-            const response = await axios.post('http://localhost:8000/api/details', formData, {
+            const response = await axios.post('http://localhost:8000/api/details/', formData, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -81,45 +89,47 @@ export default function BaliPage() {
                 message: '',
             });
         } catch (error) {
-            console.error('Error submitting form:', error);
+            console.error('Error submitting form:', error.response.data.error || error);
             alert('Error submitting form. Please try again.');
         } finally {
             setIsSubmitting(false);
         }
+
+
     };
 
     return (
         <div className="flex flex-col items-center">
             {/* Header Section */}
-            <div className="relative w-full h-[500px]">
+            <div className="relative w-full h-[300px] sm:h-[400px] md:h-[500px]">
                 <img
                     src={bali}
                     alt="Bali"
                     className="w-full h-full object-cover rounded-3xl"
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <h1 className="text-white text-6xl font-bold" style={{ fontFamily: 'cursive' }}>
+                    <h1 className="text-white text-4xl sm:text-5xl md:text-6xl font-bold" style={{ fontFamily: 'cursive' }}>
                         Bali
                     </h1>
                 </div>
             </div>
 
             {/* Main Content */}
-            <div className="flex flex-col md:flex-row p-4 space-y-6 md:space-y-0 md:space-x-8 max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row p-4 space-y-6 md:space-y-0 md:space-x-8 max-w-7xl mx-auto w-full">
                 {/* Trip Cards Section */}
                 <div className="flex flex-col space-y-4 w-full md:w-2/3">
                     {trips.map((trip) => (
                         <div
                             key={trip.id}
-                            className="flex p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+                            className="flex flex-col sm:flex-row p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer"
                             onClick={() => alert(`Clicked on ${trip.title}`)}
                         >
                             <img
                                 src={trip.image}
                                 alt={trip.title}
-                                className="w-32 h-32 object-cover rounded-md mr-4"
+                                className="w-full sm:w-32 h-32 object-cover rounded-md mb-4 sm:mb-0 mr-0 sm:mr-4"
                             />
-                            <div className="flex flex-col justify-between">
+                            <div className="flex flex-col justify-between flex-1">
                                 <div>
                                     <p className="text-sm text-gray-500">{trip.nights}</p>
                                     <h3 className="text-lg font-semibold">{trip.title}</h3>
@@ -130,7 +140,7 @@ export default function BaliPage() {
                                     <p className="text-sm text-gray-400 line-through">{trip.oldPrice}</p>
                                 </div>
                             </div>
-                            <button className="ml-auto h-12 mt-14 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-300">
+                            <button className="ml-0 sm:ml-auto h-12 mt-4 sm:mt-0 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-300">
                                 See Details
                             </button>
                         </div>
