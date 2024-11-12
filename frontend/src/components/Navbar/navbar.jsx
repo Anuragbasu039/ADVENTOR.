@@ -7,6 +7,11 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
 
+    // Set the base URL based on the current hostname
+    const API_BASE_URL = window.location.hostname === 'localhost'
+        ? 'http://localhost:8000'
+        : 'https://adventor-r9jp.onrender.com';
+
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
@@ -19,8 +24,8 @@ const Navbar = () => {
 
     const handleLogout = async () => {
         try {
-            // Send the logout request to the backend to invalidate the session
-            await axios.post("http://localhost:8000/api/auth/logout", {}, { withCredentials: true });
+            // Use the API base URL dynamically
+            await axios.post(`${API_BASE_URL}/api/auth/logout`, {}, { withCredentials: true });
 
             clearTokens();
 
@@ -48,7 +53,6 @@ const Navbar = () => {
                     <li><Link to="/about" className="hover:text-gray-900 cursor-pointer">About</Link></li>
                     <li><Link to="/register" className="hover:text-gray-900 cursor-pointer">Register</Link></li>
                     <li><Link to="/trip" className="hover:text-gray-900 cursor-pointer">Adventures</Link></li>
-                    {/*<li><Link to="/gallery" className="hover:text-gray-900 cursor-pointer">Gallery</Link></li>*/}
                     <li><Link to="/contact" className="hover:text-gray-900 cursor-pointer">Contact</Link></li>
                 </ul>
                 <button className="block lg:hidden bg-teal-600 text-white py-2 px-6 rounded-full mt-4 mx-auto" onClick={handleLogout}>
@@ -56,7 +60,7 @@ const Navbar = () => {
                 </button>
             </div>
 
-            <button className="hidden lg:block bg-teal-600 text-white py-2 px-6 rounded-full mx-auto">
+            <button className="hidden lg:block bg-teal-600 text-white py-2 px-6 rounded-full mx-auto" onClick={handleLogout}>
                 Log Out
             </button>
         </nav>
