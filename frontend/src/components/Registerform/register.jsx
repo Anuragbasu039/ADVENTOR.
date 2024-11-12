@@ -172,9 +172,11 @@ const AdventureForm = () => {
                                 onChange={handleChange}
                                 className="w-full mt-1 p-2 border border-gray-300 rounded-md"
                             >
-                                <option>Male</option>
-                                <option>Female</option>
-                                <option>Other</option>
+                                <option value="">Select Gender</option>
+                                {/* Default placeholder option */}
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
                         <div>
