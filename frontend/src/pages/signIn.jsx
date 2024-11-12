@@ -121,6 +121,7 @@ function SignIn() {
                 } else {
                     setEmailError(response.data.message);
                 }
+                // eslint-disable-next-line no-unused-vars
             } catch (error) {
                 setEmailError('Failed to sign in. Please try again.');
             } finally {
