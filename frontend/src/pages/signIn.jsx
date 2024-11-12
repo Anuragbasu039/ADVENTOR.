@@ -2,7 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-// Import useMutation from react-query
+// Import MUI components
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Checkbox from '@mui/material/Checkbox';
@@ -63,6 +63,7 @@ function SignIn() {
     const [emailError, setEmailError] = React.useState('');
     const [passwordError, setPasswordError] = React.useState('');
     const [isFormValid, setIsFormValid] = React.useState(false);
+    const [isLoading, setIsLoading] = React.useState(false);
 
     React.useEffect(() => {
         const token = localStorage.getItem('token');
@@ -102,35 +103,29 @@ function SignIn() {
         validateInputs();
     };
 
-    // API call using react-query's useMutation
-    const { mutate: signIn, isLoading, error } = useMutation(
-        async () => {
-            const response = await axios.post(
-                `${API_BASE_URL}/api/auth/signin`, // Use the dynamic API base URL
-                { email, password },
-                { withCredentials: true }
-            );
-            return response.data;
-        },
-        {
-            onSuccess: (data) => {
-                if (data.success) {
-                    localStorage.setItem('token', data.token);
-                    navigate('/home');
-                } else {
-                    setEmailError(data.message);
-                }
-            },
-            onError: () => {
-                setEmailError('Failed to sign in. Please try again.');
-            },
-        }
-    );
-
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         if (validateInputs()) {
-            signIn(); // Trigger the mutation
+            setIsLoading(true);
+
+            try {
+                const response = await axios.post(
+                    `${API_BASE_URL}/api/auth/signin`, // Use the dynamic API base URL
+                    { email, password },
+                    { withCredentials: true }
+                );
+
+                if (response.data.success) {
+                    localStorage.setItem('token', response.data.token);
+                    navigate('/home');
+                } else {
+                    setEmailError(response.data.message);
+                }
+            } catch (error) {
+                setEmailError('Failed to sign in. Please try again.');
+            } finally {
+                setIsLoading(false);
+            }
         }
     };
 
