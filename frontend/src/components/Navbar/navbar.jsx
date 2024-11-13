@@ -34,7 +34,8 @@ const Navbar = () => {
 
     return (
         <nav className="flex items-center justify-between p-4 shadow-lg bg-white rounded-full mx-4 lg:mx-auto lg:max-w-5xl relative z-50">
-            <div className="text-3xl font-bold text-teal-600 ml-4">Adventor.</div>
+            <div className="text-3xl font-bold text-teal-600 ml-4">
+                Adventor.</div>
 
             <div className="lg:hidden flex items-center">
                 <button onClick={toggleMenu} className="text-teal-600 text-3xl">

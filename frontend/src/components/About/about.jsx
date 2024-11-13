@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 import dubai from '../../assets/dubai.webp';
 import Singapour from '../../assets/singapour.webp';
 import Maldives from '../../assets/maldives.webp';
@@ -40,7 +41,9 @@ const AboutSection = () => {
                 {/* Right Section with Text */}
                 <div className="mt-8 md:mt-0 md:ml-16 max-w-md text-center md:text-left">
                     <h3 className="text-lg font-medium text-gray-500">Welcome to Adventor.</h3>
-                    <h1 className="text-3xl md:text-4xl font-bold text-black mt-2">Explore with us!</h1>
+                    <h1 className="text-3xl md:text-4xl font-bold text-black mt-2">
+                        <Link to="/explore" className="text-teal-600 hover:underline">Explore with us!</Link>
+                    </h1>
                     <p className="text-gray-700 mt-4 leading-relaxed text-sm md:text-base">
                         Your gateway to unforgettable travel experiences. At Adventor, we take pride in being your
                         one-stop solution for all your travel needs. We make travel better and easier for people of

@@ -12,7 +12,6 @@ const teamMembers = [
         name: 'Abdul Rehman',
         role: 'Developer',
         image: Abdul, // Replace with actual image URL
-        linkedIn: '#', // Replace with LinkedIn URL if available
     },
     {
         name: 'Ankit Bose',

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 import dubai from '../../assets/dubai.webp';
 import Singapour from '../../assets/singapour.webp';
 import Maldives from '../../assets/maldives.webp';
@@ -47,12 +48,12 @@ const HeroSection = () => {
 
                     {/* Button Below the Paragraph */}
                     <div className="mt-8">
-                        <a
-                            href="/about"
+                        <Link
+                            to="/about" // Use Link for navigation
                             className="inline-block bg-teal-600 text-white text-lg font-semibold py-3 px-6 rounded-lg shadow-lg hover:bg-teal-700 transition duration-300"
                         >
                             About
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>
