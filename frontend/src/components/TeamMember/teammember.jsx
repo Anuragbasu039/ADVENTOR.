@@ -10,7 +10,7 @@ const teamMembers = [
     },
     {
         name: 'Abdul Rehman',
-        role: 'Developer',
+        role: 'Tester',
         image: Abdul, // Replace with actual image URL
     },
     {
