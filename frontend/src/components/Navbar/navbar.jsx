@@ -47,7 +47,7 @@ const Navbar = () => {
                 <ul className="flex flex-col items-center space-y-4 lg:space-y-0 lg:flex-row lg:space-x-8 text-gray-700 py-4 lg:py-0 justify-center">
                     <li><Link to="/home" className="hover:text-gray-900 cursor-pointer">Home</Link></li>
                     <li><Link to="/about" className="hover:text-gray-900 cursor-pointer">About</Link></li>
-                    <li><Link to="/register" className="hover:text-gray-900 cursor-pointer">Register</Link></li>
+                    <li><Link to="/shop" className="hover:text-gray-900 cursor-pointer">Shop</Link></li>
                     <li><Link to="/trip" className="hover:text-gray-900 cursor-pointer">Adventures</Link></li>
                     <li><Link to="/contact" className="hover:text-gray-900 cursor-pointer">Contact</Link></li>
                 </ul>
