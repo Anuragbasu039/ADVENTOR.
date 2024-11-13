@@ -58,14 +58,14 @@ const AdventureForm = () => {
             {/*<Navbar />*/}
             <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
                 <header className="text-center mb-6">
-                    <div className="flex justify-center items-center mb-2">
-                        <div className="w-80 h-16 overflow-hidden flex items-center justify-center">
-                            <img src={logo} alt="Logo" />
-                        </div>
-                    </div>
-                    <h1 className="text-2xl font-bold">ADVENTUREHAVEN</h1>
+                    {/*<div className="flex justify-center items-center mb-2">*/}
+                    {/*    <div className="w-80 h-16 overflow-hidden flex items-center justify-center">*/}
+                    {/*        /!*<img src={logo} alt="Logo" />*!/*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+                    <h1 className="text-5xl text-teal-600 font-bold">Adventor.</h1>
                     <p className="text-sm text-gray-600">Your Gateway Of Affordable Adventure</p>
-                    <h2 className="mt-4 py-2 bg-gray-800 text-white font-semibold rounded-lg">
+                    <h2 className="mt-4 py-2 bg-teal-600 text-white font-semibold rounded-lg t">
                         Registration Form
                     </h2>
                 </header>
@@ -295,7 +295,7 @@ const AdventureForm = () => {
                     <div className="mt-6 text-center">
                         <button
                             type="submit"
-                            className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700"
+                            className="px-6 py-2 bg-teal-600 text-white font-semibold rounded-lg hover:bg-blue-700"
                         >
                             Next
                         </button>

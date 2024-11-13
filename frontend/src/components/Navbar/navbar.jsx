@@ -7,7 +7,6 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
 
-    // Set the base URL based on the current hostname
     const API_BASE_URL = window.location.hostname === 'localhost'
         ? 'http://localhost:8000'
         : 'https://adventor-r9jp.onrender.com';
@@ -24,12 +23,8 @@ const Navbar = () => {
 
     const handleLogout = async () => {
         try {
-            // Use the API base URL dynamically
             await axios.post(`${API_BASE_URL}/api/auth/logout`, {}, { withCredentials: true });
-
             clearTokens();
-
-            // Use React Router's navigate to redirect without page reload
             navigate("/signin");
         } catch (error) {
             console.error("Error logging out:", error);
@@ -48,7 +43,7 @@ const Navbar = () => {
             </div>
 
             <div className={`lg:flex lg:items-center lg:justify-center ${isOpen ? "block" : "hidden"} transition-all duration-300 lg:block absolute lg:static top-16 left-0 w-full lg:w-auto bg-white lg:bg-transparent shadow-lg lg:shadow-none rounded-lg z-40`}>
-                <ul className="flex flex-col items-center space-y-4 lg:space-y-0 lg:flex-row lg:space-x-8 text-gray-700 py-4 lg:py-0">
+                <ul className="flex flex-col items-center space-y-4 lg:space-y-0 lg:flex-row lg:space-x-8 text-gray-700 py-4 lg:py-0 justify-center">
                     <li><Link to="/home" className="hover:text-gray-900 cursor-pointer">Home</Link></li>
                     <li><Link to="/about" className="hover:text-gray-900 cursor-pointer">About</Link></li>
                     <li><Link to="/register" className="hover:text-gray-900 cursor-pointer">Register</Link></li>
@@ -60,7 +55,7 @@ const Navbar = () => {
                 </button>
             </div>
 
-            <button className="hidden lg:block bg-teal-600 text-white py-2 px-6 rounded-full mx-auto" onClick={handleLogout}>
+            <button className="hidden lg:block bg-teal-600 text-white py-2 px-6 rounded-full" onClick={handleLogout}>
                 Log Out
             </button>
         </nav>

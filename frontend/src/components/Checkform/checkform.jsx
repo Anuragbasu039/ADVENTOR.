@@ -38,15 +38,15 @@ const CheckForm = () => {
 
     return (
         <>
-            <Navbar />
+            {/*<Navbar />*/}
             <div className="max-w-5xl mx-auto p-8 bg-white shadow-lg rounded-lg">
                 <header className="text-center mb-6">
-                    <div className="flex justify-center items-center mb-4">
-                        <img src={logo} alt="Adventure Logo" className="w-48 h-62" />
-                    </div>
-                    <h1 className="text-3xl font-bold">ADVENTUREHAVEN</h1>
+                    {/*<div className="flex justify-center items-center mb-4">*/}
+                    {/*    <img src={logo} alt="Adventure Logo" className="w-48 h-62" />*/}
+                    {/*</div>*/}
+                    <h1 className="text-5xl text-teal-600 font-bold">Adventor.</h1>
                     <p className="text-sm text-gray-600">Your Gateway Of Affordable Adventure</p>
-                    <h2 className="mt-4 py-2 bg-gray-800 text-white font-semibold rounded-lg text-lg">
+                    <h2 className="mt-4 py-2 bg-teal-600 text-white font-semibold rounded-lg text-lg">
                         Registration Form
                     </h2>
                 </header>
