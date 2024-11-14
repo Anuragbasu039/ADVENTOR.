@@ -1,16 +1,62 @@
 import React, { useState } from "react";
-import pic1 from '../assets/Artboard.webp'
+import axios from "axios";
+import pic1 from "../assets/Artboard.webp";
+
 const ProductPage = () => {
     const [quantity, setQuantity] = useState(1);
 
     const handleAddToCart = () => {
-        // Placeholder function to handle adding product to the cart
         alert("Product added to cart!");
     };
 
-    const handleBuyNow = () => {
-        // Placeholder function for buy now functionality
-        alert("Proceeding to payment...");
+    const handleBuyNow = async () => {
+        try {
+            // Step 1: Create an order
+            const amount = 542; // Example amount in INR
+            const response = await axios.post("/api/orders/create-order", {
+                productName: "Compact Ele Stove",
+                amount,
+                quantity,
+            });
+
+            const { orderId } = response.data;
+
+            // Step 2: Display Razorpay payment modal
+            const options = {
+                key: process.env.REACT_APP_RAZORPAY_KEY_ID, // Use Razorpay test/live key here
+                amount: amount * 100, // Convert to paise
+                currency: "INR",
+                name: "Your Company",
+                description: "Compact Ele Stove",
+                image: "/logo.png",
+                order_id: orderId,
+                handler: async function (response) {
+                    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = response;
+
+                    // Step 3: Verify payment
+                    await axios.post("/api/orders/verify-payment", {
+                        razorpay_order_id,
+                        razorpay_payment_id,
+                        razorpay_signature,
+                    });
+
+                    alert("Payment successful!");
+                },
+                prefill: {
+                    name: "Your Name",
+                    email: "email@example.com",
+                    contact: "9999999999",
+                },
+                theme: {
+                    color: "#3399cc",
+                },
+            };
+
+            const paymentObject = new window.Razorpay(options);
+            paymentObject.open();
+        } catch (error) {
+            alert("Payment failed. Please try again.");
+        }
     };
 
     const increaseQuantity = () => {
@@ -28,7 +74,7 @@ const ProductPage = () => {
             {/* Product Image */}
             <div className="w-full md:w-1/2 mb-6 md:mb-0">
                 <img
-                    src={pic1} // Replace with actual image path
+                    src={pic1}
                     alt="Compact Ele Stove"
                     className="w-full h-auto shadow-lg rounded"
                 />
@@ -36,25 +82,19 @@ const ProductPage = () => {
 
             {/* Product Details */}
             <div className="w-full md:w-1/2 md:pl-10 space-y-4">
-                {/* Breadcrumb */}
                 <p className="text-sm text-gray-500">
                     Home / Shop / Accessories / Travel essentials / Compact Ele Stove
                 </p>
-
-                {/* Product Title */}
                 <h1 className="text-2xl font-bold text-gray-800">Compact Ele Stove</h1>
 
-                {/* Pricing */}
                 <div className="flex items-center space-x-2">
                     <span className="text-2xl font-semibold text-gray-900">₹542.00</span>
                     <span className="line-through text-gray-400">₹1,084.00</span>
                 </div>
                 <p className="text-sm text-gray-500">Inclusive of all taxes</p>
 
-                {/* Availability */}
                 <p className="text-green-600 font-semibold">In Stock</p>
 
-                {/* Product Description */}
                 <div>
                     <h2 className="font-semibold text-gray-800">Highlight</h2>
                     <p className="text-gray-600">
@@ -62,7 +102,6 @@ const ProductPage = () => {
                     </p>
                 </div>
 
-                {/* Quantity Selector */}
                 <div className="flex items-center space-x-4">
                     <button
                         onClick={decreaseQuantity}
@@ -79,7 +118,6 @@ const ProductPage = () => {
                     </button>
                 </div>
 
-                {/* Add to Cart and Buy Now Buttons */}
                 <div className="flex space-x-4">
                     <button
                         onClick={handleAddToCart}
@@ -95,12 +133,10 @@ const ProductPage = () => {
                     </button>
                 </div>
 
-                {/* Wishlist, SKU, Categories, and Share */}
                 <button className="text-gray-600 underline mt-2">Add to wishlist</button>
                 <p className="text-gray-600">SKU: ACC-027</p>
                 <p className="text-gray-600">Categories: Accessories, Travel essentials</p>
 
-                {/* Share Section */}
                 <div className="flex space-x-4 mt-4">
                     <a href="#" className="text-gray-500 hover:text-gray-700">Facebook</a>
                     <a href="#" className="text-gray-500 hover:text-gray-700">WhatsApp</a>

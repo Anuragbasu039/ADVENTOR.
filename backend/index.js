@@ -2,13 +2,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-
+// const bodyParser = require("body-parser");
 const session = require("express-session");
 
 const authRouter = require("./routes/auth/auth-routes");
 const contact = require("./routes/contact/contact")
 const register = require("./routes/registerform/register")
 const details = require("./routes/detailform/detailfrom")
+// const orderRoutes = require("./routes/orders/order");
 require("dotenv").config();
 
 // Connect to MongoDB
@@ -47,6 +48,8 @@ app.use("/api/auth", authRouter);
 app.use("/api", contact)
 app.use("/api/form", register)
 app.use("/api/details", details)
+// app.use(bodyParser.json());
+// app.use("/api/orders", orderRoutes);
 
 // Start server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
