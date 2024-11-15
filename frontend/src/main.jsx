@@ -12,9 +12,9 @@ import ThailandPage from "./Destinations/ThailandSection.jsx";
 import VietnamPage from "./Destinations/VietnamSection.jsx";
 import MaldivesPage from "./Destinations/MaldivesSection.jsx";
 import BaliPage from "./Destinations/BaliSection.jsx";
-import Shopingdashboard from "./ShopProduct/Shopingdashboard.jsx";
+// import Shopingdashboard from "./ShopProduct/Shopingdashboard.jsx";
 // import Checkout from "./components/checkout.jsx";
-import ProductPage from "./ShopProduct/productPage.jsx";
+// import ProductPage from "./ShopProduct/productPage.jsx";
 
 // Lazy load the components
 const SignIn = React.lazy(() => import('./pages/signIn.jsx'));
@@ -173,26 +173,7 @@ const router = createBrowserRouter([
             </PrivateRoute>
         ),
     },
-    {
-        path: "/shop",
-        element: (
-            <PrivateRoute>
-                <React.Suspense fallback={<div>Loading About...</div>}>
-                    <Shopingdashboard />
-                </React.Suspense>
-            </PrivateRoute>
-        ),
-    },
-    {
-        path: "/product1",
-        element: (
-            <PrivateRoute>
-                <React.Suspense fallback={<div>Loading Checkout...</div>}>
-                    <ProductPage />
-                </React.Suspense>
-            </PrivateRoute>
-        ),
-    },
+
 
 ]);
 
