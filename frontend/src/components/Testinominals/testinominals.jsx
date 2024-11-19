@@ -1,6 +1,9 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect } from 'react';
 import pic1 from '../../assets/anurag.png';
 import pic2 from '../../assets/Ankit.jpg'
+
+
 const testimonials = [
     {
         id: 1,
