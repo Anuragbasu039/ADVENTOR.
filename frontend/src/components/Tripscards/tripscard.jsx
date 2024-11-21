@@ -24,7 +24,7 @@ import Shimla from '../../assets/shimla.png'
 const destinations = [
     { name: "Dubai", img: dubai, link: "/dubai" },
     { name: "Thailand", img: thailand, link: "/thailand" },
-    { name: "Vietnam", img: Vietnam, link: "/vietnam" },
+    // { name: "Vietnam", img: Vietnam, link: "/vietnam" },
     { name: "Maldives", img: Maldives, link: "/maldives" },
     { name: "Bali", img: Bali, link: "/bali" },
     { name: "Bhutan", img: Bhutan, link: "/bhutan" },

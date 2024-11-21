@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import thailandImage from '../assets/thailand4.webp';
 import Thailand2 from '../assets/thailand3.webp';
 import Thailand3 from '../assets/thailand.webp';
@@ -44,6 +45,59 @@ const trips = [
 ];
 
 export default function ThailandPage() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        address: '',
+        number: '',
+        travellers: '',
+        message: '',
+    });
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        const API_BASE_URL =
+            window.location.hostname === "localhost"
+                ? "http://localhost:8000"
+                : window.location.hostname === "adventor-vf6x.vercel.app"
+                    ? "https://adventor-vf6x.vercel.app"
+                    : "https://adventor-r9jp.onrender.com";
+
+        try {
+            const response = await axios.post(`${API_BASE_URL}/api/details/`, formData, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            alert(response.data.message);
+            setFormData({
+                name: '',
+                email: '',
+                address: '',
+                number: '',
+                travellers: '',
+                message: '',
+            });
+        } catch (error) {
+            console.error('Error submitting form:', error.response?.data?.error || error.message);
+            alert('Error submitting form. Please try again.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
     return (
         <div className="flex flex-col items-center">
             {/* Header Section */}
@@ -95,46 +149,73 @@ export default function ThailandPage() {
 
                 {/* Contact Form */}
                 <div className="w-full md:w-1/3">
-                    <form className="bg-white p-4 sm:p-6 rounded-lg shadow-md space-y-4 max-w-full">
+                    <form
+                        className="bg-white p-4 sm:p-6 rounded-lg shadow-md space-y-4 max-w-full"
+                        onSubmit={handleSubmit}
+                    >
                         <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
                             Get in Touch with our Travel experts.
                         </h2>
                         <input
                             type="text"
+                            name="name"
                             placeholder="Your name"
+                            value={formData.name}
+                            onChange={handleChange}
                             className="w-full p-2 border border-gray-300 rounded-md"
+                            required
                         />
                         <input
                             type="email"
+                            name="email"
                             placeholder="Email"
+                            value={formData.email}
+                            onChange={handleChange}
                             className="w-full p-2 border border-gray-300 rounded-md"
+                            required
                         />
                         <input
                             type="text"
+                            name="address"
                             placeholder="Address"
+                            value={formData.address}
+                            onChange={handleChange}
                             className="w-full p-2 border border-gray-300 rounded-md"
+                            required
                         />
                         <input
                             type="tel"
+                            name="number"
                             placeholder="Phone number"
+                            value={formData.number}
+                            onChange={handleChange}
                             className="w-full p-2 border border-gray-300 rounded-md"
+                            required
                         />
                         <input
                             type="number"
+                            name="travellers"
                             placeholder="Number of travellers"
+                            value={formData.travellers}
+                            onChange={handleChange}
                             className="w-full p-2 border border-gray-300 rounded-md"
                             min="1"
+                            required
                         />
                         <textarea
+                            name="message"
                             placeholder="Message"
+                            value={formData.message}
+                            onChange={handleChange}
                             className="w-full p-2 border border-gray-300 rounded-md"
                             rows="4"
                         />
                         <button
                             type="submit"
                             className="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors duration-300"
+                            disabled={isSubmitting}
                         >
-                            SEND ME DETAILS
+                            {isSubmitting ? 'Sending...' : 'SEND ME DETAILS'}
                         </button>
                     </form>
                 </div>

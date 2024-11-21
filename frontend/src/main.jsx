@@ -9,9 +9,10 @@ import {
 import './index.css';
 import App from './App.jsx';
 import ThailandPage from "./Destinations/ThailandSection.jsx";
-import VietnamPage from "./Destinations/VietnamSection.jsx";
+import VietnamPage from "./Destinations/BhutanSection.jsx";
 import MaldivesPage from "./Destinations/MaldivesSection.jsx";
 import BaliPage from "./Destinations/BaliSection.jsx";
+import BhutanPage from "./Destinations/BhutanSection.jsx";
 // import Shopingdashboard from "./ShopProduct/Shopingdashboard.jsx";
 // import Checkout from "./components/checkout.jsx";
 // import ProductPage from "./ShopProduct/productPage.jsx";
@@ -144,11 +145,11 @@ const router = createBrowserRouter([
         ),
     },
     {
-        path: "/vietnam",
+        path: "/bhutan",
         element: (
             <PrivateRoute>
                 <React.Suspense fallback={<div>Loading About...</div>}>
-                    <VietnamPage />
+                    <BhutanPage />
                 </React.Suspense>
             </PrivateRoute>
         ),
