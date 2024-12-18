@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 import Dubai1 from '../assets/dubai.webp';
 import dubaiImage from '../assets/dubai2.webp';
 import Dubai3 from '../assets/dubai3.webp';
 import Dubai4 from '../assets/dubai4.webp';
 import Footer from "../components/Footer/footer.jsx";
-
 
 const trips = [
     {
@@ -119,8 +118,7 @@ export default function DubaiPage() {
                     {trips.map((trip) => (
                         <div
                             key={trip.id}
-                            className="flex flex-col sm:flex-row p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 cursor-pointer"
-                            onClick={() => alert(`Clicked on ${trip.title}`)}
+                            className="flex flex-col sm:flex-row p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
                         >
                             <img
                                 src={trip.image}
@@ -138,9 +136,10 @@ export default function DubaiPage() {
                                     <p className="text-sm text-gray-400 line-through">{trip.oldPrice}</p>
                                 </div>
                             </div>
-                            <button className="ml-0 sm:ml-auto h-12 mt-4 sm:mt-0 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-300">
+                            {/* Link to Dubaibooking */}
+                            <Link to={`/dubaibooking/${trip.id}`} className="ml-0 sm:ml-auto h-12 mt-4 sm:mt-0 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors duration-300">
                                 See Details
-                            </button>
+                            </Link>
                         </div>
                     ))}
                 </div>
@@ -148,7 +147,7 @@ export default function DubaiPage() {
                 {/* Contact Form */}
                 <div className="w-full md:w-1/3">
                     <form className="bg-white p-4 sm:p-6 rounded-lg shadow-md space-y-4 max-w-full" onSubmit={handleSubmit}>
-                        <h2 className="text-lg sm:text-xl font-semibold text-gray-800">
+                        <h2 className="text-lg sm:text-3xl font-semibold text-gray-800">
                             Get in Touch with our Travel experts.
                         </h2>
                         <input

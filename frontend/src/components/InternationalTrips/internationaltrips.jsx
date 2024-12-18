@@ -6,10 +6,10 @@ import Dubai from '../../assets/dubai.webp';
 import Azerbaizan from '../../assets/Azerbaizan.webp';
 
 const destinations = [
-    { name: 'Singapour', img: Singapour, path: '/singapour' },
-    { name: 'Malaysia', img: Malaysia, path: '/malaysia' },
-    { name: 'Dubai', img: Dubai, path: '/dubai' },
-    { name: 'Azerbaizan', img: Azerbaizan, path: '/azerbaizan' },
+    { name: 'Singapour', img: Singapour, path: '/home' },
+    { name: 'Malaysia', img: Malaysia, path: '/home' },
+    { name: 'Dubai', img: Dubai, path: '/home' },
+    { name: 'Azerbaizan', img: Azerbaizan, path: '/home' },
     // Add more items with corresponding paths if needed
 ];
 

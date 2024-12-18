@@ -5,10 +5,12 @@ import Singapour from '../../assets/singapour.webp';
 import Maldives from '../../assets/maldives.webp';
 import Footer from "../Footer/footer.jsx";
 import Teammember from "../TeamMember/teammember.jsx";
+import Navbar from "../Navbar/navbar.jsx";
 
 const AboutSection = () => {
     return (
         <>
+            <Navbar/>
             <h1 className="font-medium text-5xl text-teal-600 text-center mt-8">About</h1>
 
             <div className="flex flex-col-reverse md:flex-row items-center justify-center py-8 px-4 md:px-20 bg-white">

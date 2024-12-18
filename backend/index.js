@@ -48,6 +48,7 @@ app.use("/api/auth", authRouter);
 app.use("/api", contact)
 app.use("/api/form", register)
 app.use("/api/details", details)
+
 // app.use(bodyParser.json());
 // app.use("/api/orders", orderRoutes);
 

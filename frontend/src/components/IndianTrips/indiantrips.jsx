@@ -6,10 +6,10 @@ import Himachalpradesh from '../../assets/Himachal pradesh.webp';
 import Goa from '../../assets/goa.webp';
 
 const destinations = [
-    { name: 'North East', img: Northeast, path: '/north-east' },
-    { name: 'Andaman', img: Andaman, path: '/andaman' },
-    { name: 'Himachal Pradesh', img: Himachalpradesh, path: '/himachal-pradesh' },
-    { name: 'Goa', img: Goa, path: '/goa' },
+    { name: 'North East', img: Northeast, path: '/home' },
+    { name: 'Andaman', img: Andaman, path: '/home' },
+    { name: 'Himachal Pradesh', img: Himachalpradesh, path: '/home' },
+    { name: 'Goa', img: Goa, path: '/home' },
     // Add more items with corresponding paths if needed
 ];
 
