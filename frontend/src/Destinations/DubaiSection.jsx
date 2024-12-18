@@ -6,6 +6,7 @@ import Dubai3 from '../assets/dubai3.webp';
 import Dubai4 from '../assets/dubai4.webp';
 import Footer from "../components/Footer/footer.jsx";
 
+
 const trips = [
     {
         id: 1,
