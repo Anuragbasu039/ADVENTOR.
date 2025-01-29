@@ -22,12 +22,11 @@ const SignIn = React.lazy(() => import('./pages/signIn.jsx'));
 const SignUp = React.lazy(() => import('./pages/signUp.jsx'));
 const Home = React.lazy(() => import('./pages/Home/home.jsx'));
 const Contact = React.lazy(() => import('./components/Contact/contact.jsx'));
-// const Register = React.lazy(() => import('./components/Registerform/register.jsx'));
+const Register = React.lazy(() => import('./components/Registerform/register.jsx'));
 const Checkform = React.lazy(() => import('./components/Checkform/checkform.jsx'));
 const Trips = React.lazy(() => import('./components/Trips/trips.jsx'));
 const About = React.lazy(() => import('./components/About/about.jsx'));
 const DestinationSection = React.lazy(() => import('./Destinations/DubaiSection.jsx'))
-
 // PrivateRoute component to protect routes
 const PrivateRoute = ({ children }) => {
     const token = localStorage.getItem('token');
@@ -166,6 +165,16 @@ const router = createBrowserRouter([
             </PrivateRoute>
         ),
     },
+    {
+        path: "/registration", // Dynamic segment for trip ID
+        element: (
+            <PrivateRoute>
+                <React.Suspense fallback={<div>Loading Dubaibooking...</div>}>
+                    <Register />
+                </React.Suspense>
+            </PrivateRoute>
+        ),
+    }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
