@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import { GoogleLogin } from '@react-oauth/google';
-// import jwtDecode from 'jwt-decode';
-import { jwtDecode } from "jwt-decode";
+import { GoogleAuthProvider, signInWithPopup, getAuth } from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
 
-const API_BASE_URL =
-    window.location.hostname === "localhost"
-        ? "http://localhost:8000"
-        : window.location.hostname === "adventor-vf6x.vercel.app"
-            ? "https://adventor-vf6x.vercel.app"
-            : "https://adventor-r9jp.onrender.com";
+const firebaseConfig = {
+    apiKey: "AIzaSyDDp0gTyd9kjkyFV641JP5Bl365NvAwTyA",
+    authDomain: "adventor-f219a.firebaseapp.com",
+    projectId: "adventor-f219a",
+    storageBucket: "adventor-f219a.firebasestorage.app",
+    messagingSenderId: "792452735163",
+    appId: "1:792452735163:web:72084044f6aaf88e03c99e",
+    measurementId: "G-5WT3PKS3V0"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
 
 const SignInPage = () => {
     const navigate = useNavigate();
@@ -59,52 +62,16 @@ const SignInPage = () => {
         validateInputs();
     };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        if (validateInputs()) {
-            setIsLoading(true);
-
-            try {
-                const response = await axios.post(
-                    `${API_BASE_URL}/api/auth/signin`,
-                    { email, password },
-                    { withCredentials: true }
-                );
-
-                if (response.data.success) {
-                    localStorage.setItem('token', response.data.token);
-                    navigate('/home');
-                } else {
-                    setEmailError(response.data.message);
-                }
-            } catch (error) {
-                setEmailError('Failed to sign in. Please try again.');
-            } finally {
-                setIsLoading(false);
-            }
-        }
-    };
-
-    const handleGoogleSuccess = async (credentialResponse) => {
-        const decoded = jwtDecode(credentialResponse.credential);
+    const handleGoogleSignIn = async () => {
+        const provider = new GoogleAuthProvider();
         try {
-            const response = await axios.post(
-                `${API_BASE_URL}/api/auth/google-signin`,
-                { token: credentialResponse.credential },
-                { withCredentials: true }
-            );
-
-            if (response.data.success) {
-                localStorage.setItem('token', response.data.token);
-                navigate('/home');
-            }
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
+            localStorage.setItem('token', user.accessToken);
+            navigate('/home');
         } catch (error) {
             console.error('Google sign-in failed:', error);
         }
-    };
-
-    const handleGoogleFailure = () => {
-        console.error('Google sign-in failed');
     };
 
     return (
@@ -137,9 +104,9 @@ const SignInPage = () => {
                     <div className="flex justify-end mb-4">
                         <Link to="/forgot-password" className="text-sm text-teal-600 hover:underline">Forgot your password?</Link>
                     </div>
-                    <button onClick={handleSubmit} className="w-full bg-teal-600 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200" disabled={!isFormValid || isLoading}>{isLoading ? 'Signing in...' : 'LOGIN'}</button>
+                    <button className="w-full bg-teal-600 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200" disabled={!isFormValid || isLoading}>{isLoading ? 'Signing in...' : 'LOGIN'}</button>
                     <div className="mt-4 flex justify-center">
-                        <GoogleLogin onSuccess={handleGoogleSuccess} onError={handleGoogleFailure} />
+                        <button onClick={handleGoogleSignIn} className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition duration-200">Sign in with Google</button>
                     </div>
                     <p className="text-center text-gray-600 text-sm mt-4">Don’t have an account? <Link to="/signup" className="text-teal-600 hover:underline">Register Now</Link></p>
                 </div>
