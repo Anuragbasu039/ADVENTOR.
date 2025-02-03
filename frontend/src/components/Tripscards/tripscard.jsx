@@ -2,7 +2,7 @@
 import React from 'react';
 import dubai from '../../assets/dubai.webp';
 import thailand from '../../assets/thailand.webp';
-import Vietnam from '../../assets/vietnam.webp'
+// import Vietnam from '../../assets/vietnam.webp'
 import Maldives from '../../assets/maldives.webp'
 import Bali from '../../assets/bali.webp'
 import Bhutan from '../../assets/bhutan.webp'
@@ -27,7 +27,7 @@ const destinations = [
     // { name: "Vietnam", img: Vietnam, link: "/vietnam" },
     { name: "Maldives", img: Maldives, link: "/maldives" },
     { name: "Bali", img: Bali, link: "/bali" },
-    { name: "Bhutan", img: Bhutan, link: "/bhutan" },
+    { name: "Bhutan", img: Bhutan, link: "/home" },
     { name: "Malaysia", img: Malaysia, link: "/home" },
     { name: "Singapore", img: Singapore, link: "/home" },
     { name: "Azerbaijan", img: Azerbaijan, link: "/home" },
@@ -40,8 +40,8 @@ const destinations = [
     { name: "Rajasthan", img: Rajasthan, link: "/home" },
     { name: "North East", img: NorthEast, link: "/home" },
     { name: "Kerala", img: Kerala, link: "/home" },
-    { name: "Nanital", img: Nanital, link: "/nanital" },
-    { name: "Shimla", img: Shimla, link: "/shimla" },
+    { name: "Nanital", img: Nanital, link: "/home" },
+    { name: "Shimla", img: Shimla, link: "/home" },
 ];
 
 function BestTrips() {
