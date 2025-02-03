@@ -10,9 +10,7 @@ const Navbar = () => {
     const API_BASE_URL =
         window.location.hostname === "localhost"
             ? "http://localhost:8000"
-            : window.location.hostname === "adventor-vf6x.vercel.app"
-                ? "https://adventor-vf6x.vercel.app"
-                : "https://adventor-r9jp.onrender.com";
+            : "https://adventor-liard.vercel.app";
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
