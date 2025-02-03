@@ -15,7 +15,7 @@ const API_BASE_URL =
 
 
 
-const SignInPage = () => {
+const SignUPPage = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -153,4 +153,4 @@ const SignInPage = () => {
     );
 };
 
-export default SignInPage;
+export default SignUPPage;
