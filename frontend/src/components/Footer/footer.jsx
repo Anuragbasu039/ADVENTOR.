@@ -69,7 +69,7 @@ const Footer = () => {
                     <ul className="text-black space-y-2 ">
                         <li>
                             <FontAwesomeIcon icon={faMapMarkerAlt} className="mr-2" />
-                            932 Galvin St. Pompano Beach, FL 33060
+                            932 ABCD
                         </li>
                         <li>
                             <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
@@ -77,7 +77,7 @@ const Footer = () => {
                         </li>
                         <li>
                             <FontAwesomeIcon icon={faPhoneAlt} className="mr-2" />
-                            (334) 336 3346
+                            91-9870xxxxxx
                         </li>
                     </ul>
                 </div>
