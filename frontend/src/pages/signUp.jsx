@@ -8,7 +8,9 @@ import { useNavigate, Link } from 'react-router-dom'; // Import Link from react-
 const API_BASE_URL =
     window.location.hostname === "localhost"
         ? "http://localhost:8000"
-        : "https://adventor-liard.vercel.app";
+        : window.location.hostname === "adventor-vf6x.vercel.app"
+            ? "https://adventor-vf6x.vercel.app"
+            : "https://adventor-r9jp.onrender.com";
 
 
 

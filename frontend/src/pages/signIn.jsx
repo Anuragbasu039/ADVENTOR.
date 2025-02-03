@@ -20,7 +20,7 @@ const auth = getAuth(app);
 const API_BASE_URL =
     window.location.hostname === "localhost"
         ? "http://localhost:8000"
-        : "https://adventor-liard.vercel.app";
+        : "https://adventor-r9jp.onrender.com";
 
 const SignInPage = () => {
     const navigate = useNavigate();
